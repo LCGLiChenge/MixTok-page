@@ -152,6 +152,11 @@ img { display: block; max-width: 100%; }
 
 .pill-dark { color: white; background: var(--ink); }
 .pill:hover { transform: translateY(-2px); background: var(--blue-dark); }
+.pill-disabled {
+  cursor: default;
+  opacity: 0.48;
+}
+.pill-disabled:hover { transform: none; background: var(--ink); }
 
 .hero-lede {
   max-width: 730px;
