@@ -8,43 +8,44 @@
   <meta property="og:title" content="MixTok: Adaptive Visual Tokenization">
   <meta property="og:description" content="Global 1D tokens meet sparse, content-adaptive 2D refinement.">
   <meta property="og:image" content="assets/images/paradigms.webp">
-  <meta name="theme-color" content="#f6f4ef">
+  <meta name="theme-color" content="#faf9f6">
   <title>MixTok · Adaptive Visual Tokenization</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css?v=20260928-design2">
 </head>
 <body>
+  <a class="skip-link" href="#abstract">Skip to content</a>
   <header class="site-header" id="top">
     <nav class="nav shell" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="MixTok home">MixTok</a>
+      <a class="brand" href="#top" aria-label="MixTok home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>MixTok</a>
       <div class="nav-links">
         <a href="#abstract">Abstract</a>
         <a href="#method">Method</a>
         <a href="#results">Results</a>
         <a href="#visuals">Visuals</a>
+        <a href="#citation">Citation</a>
       </div>
     </nav>
   </header>
 
   <main>
     <section class="hero shell">
-      <p class="eyebrow">Adaptive visual tokenization</p>
-      <h1>MixTok</h1>
-      <p class="subtitle">Global 1D Tokens with Sparse 2D Refinement</p>
+      <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Adaptive visual tokenization</p>
+      <h1>Mix<span>Tok</span><span class="title-dot" aria-hidden="true">.</span></h1>
+      <p class="subtitle">Global <span class="global-accent">1D tokens.</span><br>Sparse <span class="local-accent">2D refinement.</span></p>
 
       <div class="author-placeholder" role="note">
-        <span class="status-dot" aria-hidden="true"></span>
         Author information withheld during double-blind review
       </div>
 
       <div class="link-row" aria-label="Project resources">
-        <span class="pill pill-dark pill-disabled" aria-disabled="true">
-          <span aria-hidden="true">▤</span> Paper
+        <span class="pill pill-disabled" aria-disabled="true" title="Paper link coming soon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z M14 3v6h6 M8 13h8 M8 17h6"/></svg> Paper <span class="soon">Soon</span>
         </span>
         <a class="pill pill-dark" href="https://github.com/LCGLiChenge/MixTok">
-          <span aria-hidden="true">⌘</span> Code
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6 M16 6l6 6-6 6 M14 3l-4 18"/></svg> Code
         </a>
-        <a class="pill pill-dark" href="https://huggingface.co/Chloeeeeeeee123/MixTok">
-          <span aria-hidden="true">🤗</span> Models
+        <a class="pill" href="https://huggingface.co/Chloeeeeeeee123/MixTok">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5Z M3 12l9 5 9-5 M3 16l9 5 9-5"/></svg> Models
         </a>
       </div>
 
@@ -54,7 +55,8 @@
       </p>
 
       <figure class="hero-figure">
-        <img src="assets/images/generation-samples.webp" alt="MixTok class-conditional generation examples showing base images, selected refinement locations, and final refined images">
+        <div class="figure-topline"><span>From global structure to local detail</span><span class="figure-tag">ImageNet 256 × 256</span></div>
+        <img width="2816" height="1609" decoding="async" src="assets/images/generation-samples.webp" alt="MixTok class-conditional generation examples showing base images, selected refinement locations, and final refined images">
         <figcaption>
           <strong>Content-adaptive generation.</strong> Each group shows the 1D base image,
           selected refinement locations, and the final image after sparse 2D refinement.
@@ -112,7 +114,7 @@
         </div>
 
         <figure class="wide-figure">
-          <img src="assets/images/paradigms.webp" loading="lazy" alt="Comparison among 1D tokenization, dense 2D tokenization, and the MixTok hybrid representation">
+          <img width="3687" height="939" decoding="async" src="assets/images/paradigms.webp" loading="lazy" alt="Comparison among 1D tokenization, dense 2D tokenization, and the MixTok hybrid representation">
           <figcaption>
             <strong>A hybrid representation.</strong> Compact 1D tokens preserve global structure;
             sparse 2D tokens restore local detail without retaining the full grid as content tokens.
@@ -139,7 +141,7 @@
 
         <div class="method-block">
           <h3>Adaptive reconstruction</h3>
-          <img src="assets/images/method-reconstruction.webp" loading="lazy" alt="MixTok reconstruction architecture with 1D and 2D token branches, reconstruction grid scorer, budget controller, and shared decoder">
+          <img width="2288" height="953" decoding="async" src="assets/images/method-reconstruction.webp" loading="lazy" alt="MixTok reconstruction architecture with 1D and 2D token branches, reconstruction grid scorer, budget controller, and shared decoder">
           <p>
             The Reconstruction Grid Scorer sees both feature branches and the base reconstruction.
             Its score distribution drives the Budget Controller, concentrating the available 2D
@@ -149,7 +151,7 @@
 
         <div class="method-block">
           <h3>Two-stage masked generation</h3>
-          <img src="assets/images/method-generation.webp" loading="lazy" alt="Two-stage MixTok generation with a 1D MaskGIT, generation grid scorer, embedding adapter, and sparse 2D MaskGIT">
+          <img width="2117" height="867" decoding="async" src="assets/images/method-generation.webp" loading="lazy" alt="Two-stage MixTok generation with a 1D MaskGIT, generation grid scorer, embedding adapter, and sparse 2D MaskGIT">
           <p>
             During generation, the 2D branch is unavailable to the router. A Generation Grid Scorer
             distilled from its reconstruction counterpart predicts the refinement set from the base
@@ -242,7 +244,7 @@
 
         <figure class="visual-panel">
           <h3>Reconstruction</h3>
-          <img src="assets/images/reconstruction-samples.webp" loading="lazy" alt="Reconstruction examples comparing ground truth, 1D base reconstruction, selected grid locations, and MixTok reconstruction">
+          <img width="3924" height="1145" decoding="async" src="assets/images/reconstruction-samples.webp" loading="lazy" alt="Reconstruction examples comparing ground truth, 1D base reconstruction, selected grid locations, and MixTok reconstruction">
           <figcaption>
             Ground truth, 1D base reconstruction, selected local regions, and final mixed reconstruction.
           </figcaption>
@@ -250,7 +252,7 @@
 
         <figure class="visual-panel">
           <h3>Image-dependent token budgets</h3>
-          <img src="assets/images/token-distributions.webp" loading="lazy" alt="Distribution of selected 2D token counts for reconstruction and three generation seeds">
+          <img width="3490" height="2189" decoding="async" src="assets/images/token-distributions.webp" loading="lazy" alt="Distribution of selected 2D token counts for reconstruction and three generation seeds">
           <figcaption>
             MixTok varies the refinement budget by image. Generation distributions remain stable across sampling seeds.
           </figcaption>
@@ -283,6 +285,11 @@
     </div>
   </footer>
 
-  <script src="assets/script.js"></script>
+  <dialog class="image-viewer" aria-label="Expanded figure">
+    <div class="viewer-toolbar"><p id="viewer-caption">Figure</p><button class="viewer-close" type="button" aria-label="Close expanded figure">Close <span aria-hidden="true">×</span></button></div>
+    <div class="viewer-body"><img alt=""></div>
+    <p class="viewer-hint">Scroll to explore · Esc to close</p>
+  </dialog>
+  <script src="assets/script.js?v=20260928-design2"></script>
 </body>
 </html>
