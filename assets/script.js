@@ -13,21 +13,6 @@ document.querySelectorAll('[data-copy]').forEach((button) => {
   });
 });
 
-// Keep the navigation aligned with the section currently being read.
-const sectionLinks = [...document.querySelectorAll('.nav-links a')];
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      sectionLinks.forEach((link) => {
-        if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
-        else link.removeAttribute('aria-current');
-      });
-    });
-  }, { rootMargin: '-15% 0px -55% 0px' });
-  document.querySelectorAll('main .hero, main section[id]').forEach((section) => observer.observe(section));
-}
-
 // The original figures remain readable without JavaScript.
 const viewer = document.querySelector('.image-viewer');
 if (viewer && typeof viewer.showModal === 'function') {

@@ -1,295 +1,678 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="MixTok adaptively combines compact global 1D tokens with sparse local 2D refinement for image reconstruction and generation.">
-  <meta name="keywords" content="MixTok, visual tokenization, image generation, adaptive tokens, MaskGIT">
-  <meta property="og:title" content="MixTok: Adaptive Visual Tokenization">
-  <meta property="og:description" content="Global 1D tokens meet sparse, content-adaptive 2D refinement.">
-  <meta property="og:image" content="assets/images/paradigms.webp">
-  <meta name="theme-color" content="#faf9f6">
-  <title>MixTok · Adaptive Visual Tokenization</title>
-  <link rel="stylesheet" href="assets/style.css?v=20260928-design2">
-</head>
-<body>
-  <a class="skip-link" href="#abstract">Skip to content</a>
-  <header class="site-header" id="top">
-    <nav class="nav shell" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="MixTok home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>MixTok</a>
-      <div class="nav-links">
-        <a href="#abstract">Abstract</a>
-        <a href="#method">Method</a>
-        <a href="#results">Results</a>
-        <a href="#visuals">Visuals</a>
-        <a href="#citation">Citation</a>
-      </div>
-    </nav>
-  </header>
-
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="MixTok adaptively combines compact global 1D tokens with sparse local 2D refinement for image reconstruction and generation." name="description"/>
+  <meta content="MixTok, visual tokenization, image generation, adaptive tokens, MaskGIT" name="keywords"/>
+  <meta content="MixTok: Adaptive Visual Tokenization" property="og:title"/>
+  <meta content="Global 1D tokens meet sparse, content-adaptive 2D refinement." property="og:description"/>
+  <meta content="assets/images/paradigms.webp" property="og:image"/>
+  <meta content="#ffffff" name="theme-color"/>
+  <title>
+   MixTok · Adaptive Visual Tokenization
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Google+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link href="assets/vendor/bulma.min.css" rel="stylesheet"/>
+  <link href="assets/style.css?v=flashar-layout-1" rel="stylesheet"/>
+ </head>
+ <body>
   <main>
-    <section class="hero shell">
-      <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Adaptive visual tokenization</p>
-      <h1>Mix<span>Tok</span><span class="title-dot" aria-hidden="true">.</span></h1>
-      <p class="subtitle">Global <span class="global-accent">1D tokens.</span><br>Sparse <span class="local-accent">2D refinement.</span></p>
-
-      <div class="author-placeholder" role="note">
-        Author information withheld during double-blind review
+   <section class="hero">
+    <div class="hero-body">
+     <div class="container is-max-desktop">
+      <div class="columns is-centered">
+       <div class="column has-text-centered">
+        <h1 class="title is-2 publication-title">
+         MixTok: Adaptive Visual Tokenization
+         <br class="desktop-break"/>
+         with Global 1D Tokens and Sparse 2D Refinement
+        </h1>
+        <div class="publication-authors" style="margin-top: 0.8rem; color: #777;">
+         Author information withheld during double-blind review
+        </div>
+        <div class="column has-text-centered" style="margin-top: 1rem;">
+         <div class="link-block">
+          <span aria-disabled="true" class="button is-rounded is-dark is-small" title="Paper link coming soon">
+           <span class="icon">
+            <svg aria-hidden="true" viewbox="0 0 24 24">
+             <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z M14 3v6h6 M8 13h8 M8 17h6">
+             </path>
+            </svg>
+           </span>
+           <span>
+            Paper
+           </span>
+          </span>
+          <a class="button is-rounded is-dark is-small" href="https://github.com/LCGLiChenge/MixTok">
+           <span class="icon">
+            <svg aria-hidden="true" viewbox="0 0 24 24">
+             <path d="m8 6-6 6 6 6 M16 6l6 6-6 6 M14 3l-4 18">
+             </path>
+            </svg>
+           </span>
+           <span>
+            Code
+           </span>
+          </a>
+          <a class="button is-rounded is-dark is-small" href="https://huggingface.co/Chloeeeeeeee123/MixTok">
+           <span class="icon">
+            <svg aria-hidden="true" viewbox="0 0 24 24">
+             <path d="m12 3 9 5-9 5-9-5Z M3 12l9 5 9-5 M3 16l9 5 9-5">
+             </path>
+            </svg>
+           </span>
+           <span>
+            Models
+           </span>
+          </a>
+         </div>
+        </div>
+       </div>
       </div>
-
-      <div class="link-row" aria-label="Project resources">
-        <span class="pill pill-disabled" aria-disabled="true" title="Paper link coming soon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z M14 3v6h6 M8 13h8 M8 17h6"/></svg> Paper <span class="soon">Soon</span>
-        </span>
-        <a class="pill pill-dark" href="https://github.com/LCGLiChenge/MixTok">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6 M16 6l6 6-6 6 M14 3l-4 18"/></svg> Code
-        </a>
-        <a class="pill" href="https://huggingface.co/Chloeeeeeeee123/MixTok">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5Z M3 12l9 5 9-5 M3 16l9 5 9-5"/></svg> Models
-        </a>
-      </div>
-
-      <p class="hero-lede">
-        One image, two token geometries: a compact global sequence for structure,
-        plus image-dependent local tokens where detail needs refinement.
-      </p>
-
-      <figure class="hero-figure">
-        <div class="figure-topline"><span>From global structure to local detail</span><span class="figure-tag">ImageNet 256 × 256</span></div>
-        <img width="2816" height="1609" decoding="async" src="assets/images/generation-samples.webp" alt="MixTok class-conditional generation examples showing base images, selected refinement locations, and final refined images">
-        <figcaption>
-          <strong>Content-adaptive generation.</strong> Each group shows the 1D base image,
+     </div>
+    </div>
+   </section>
+   <section class="hero teaser">
+    <div class="container is-max-desktop">
+     <div class="hero-body">
+      <figure class="paper-figure">
+       <img alt="MixTok class-conditional generation examples showing base images, selected refinement locations, and final refined images" decoding="async" height="1609" src="assets/images/generation-samples.webp" width="2816"/>
+       <figcaption class="fig-caption">
+        <strong>
+         Content-adaptive generation.
+        </strong>
+        Each group shows the 1D base image,
           selected refinement locations, and the final image after sparse 2D refinement.
-        </figcaption>
+       </figcaption>
       </figure>
-    </section>
-
-    <section class="metric-band" aria-label="Headline results">
-      <div class="shell metrics">
-        <div class="metric">
-          <span class="metric-value">1.195</span>
-          <span class="metric-label">rFID at ≈128 tokens</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value">1.9511</span>
-          <span class="metric-label">gFID at ≈131 tokens</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value">270.1<span class="metric-unit"> ms</span></span>
-          <span class="metric-label">RTX 5090 end-to-end latency</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section shell narrow" id="abstract">
-      <div class="section-heading">
-        <span>01</span>
-        <h2>Abstract</h2>
-      </div>
-      <div class="prose abstract-copy">
-        <p>
-          Efficient visual tokenization requires compact representations without losing
+     </div>
+    </div>
+   </section>
+   <div class="highlights">
+    <div class="hl-item">
+     <div class="hl-num">
+      1.195
+     </div>
+     <div class="hl-desc">
+      rFID at ≈128 tokens
+     </div>
+    </div>
+    <div class="hl-item">
+     <div class="hl-num">
+      1.9511
+     </div>
+     <div class="hl-desc">
+      gFID at ≈131 tokens
+     </div>
+    </div>
+    <div class="hl-item">
+     <div class="hl-num">
+      270.1
+      <span class="hl-unit">
+       ms
+      </span>
+     </div>
+     <div class="hl-desc">
+      RTX 5090 end-to-end latency
+     </div>
+    </div>
+   </div>
+   <section class="section" id="abstract">
+    <div class="container is-max-desktop">
+     <h2 class="title is-3 section-title has-text-centered">
+      Abstract
+     </h2>
+     <div class="content has-text-justified reading-column">
+      <p>
+       Efficient visual tokenization requires compact representations without losing
           fine-grained image content. Dense grid tokenizers allocate capacity uniformly,
           while short 1D token sequences capture global structure but can miss local detail.
-          <strong>MixTok combines both:</strong> a compact 1D representation is expanded into
+       <strong>
+        MixTok combines both:
+       </strong>
+       a compact 1D representation is expanded into
           a base feature grid, and a content-adaptive router selects how many 2D tokens to
           retain and where to place them. Selected 2D features replace the corresponding
           base features before a shared decoder reconstructs the image.
-        </p>
-        <p>
-          The same representation supports two-stage masked generation. A 1D MaskGIT first
+      </p>
+      <p>
+       The same representation supports two-stage masked generation. A 1D MaskGIT first
           generates global tokens; a distilled grid scorer chooses the sparse refinement set;
           a 2D MaskGIT then generates local tokens using continuous spatial context from the
           base representation. On ImageNet 256×256, MixTok reaches an rFID of 1.195 and a
           gFID of 1.9511 with average budgets of roughly 128 and 131 content tokens.
-        </p>
-      </div>
-    </section>
-
-    <section class="section section-tinted" id="method">
-      <div class="shell">
-        <div class="section-heading">
-          <span>02</span>
-          <h2>Method</h2>
-        </div>
-
-        <figure class="wide-figure">
-          <img width="3687" height="939" decoding="async" src="assets/images/paradigms.webp" loading="lazy" alt="Comparison among 1D tokenization, dense 2D tokenization, and the MixTok hybrid representation">
-          <figcaption>
-            <strong>A hybrid representation.</strong> Compact 1D tokens preserve global structure;
+      </p>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="method">
+    <div class="container is-max-desktop">
+     <h2 class="title is-3 section-title has-text-centered">
+      Method
+     </h2>
+     <figure class="paper-figure">
+      <img alt="Comparison among 1D tokenization, dense 2D tokenization, and the MixTok hybrid representation" decoding="async" height="939" loading="lazy" src="assets/images/paradigms.webp" width="3687"/>
+      <figcaption class="fig-caption">
+       <strong>
+        A hybrid representation.
+       </strong>
+       Compact 1D tokens preserve global structure;
             sparse 2D tokens restore local detail without retaining the full grid as content tokens.
-          </figcaption>
-        </figure>
-
-        <div class="feature-grid">
-          <article class="feature-card">
-            <span class="feature-index">A</span>
-            <h3>Global base</h3>
-            <p>A short 1D token sequence is spatially expanded and aligned with the shared decoder’s feature space.</p>
-          </article>
-          <article class="feature-card">
-            <span class="feature-index">B</span>
-            <h3>Adaptive routing</h3>
-            <p>A grid scorer ranks candidate positions; top-p selection jointly determines the locations and per-image token count.</p>
-          </article>
-          <article class="feature-card">
-            <span class="feature-index">C</span>
-            <h3>Local refinement</h3>
-            <p>Selected 2D token features replace the aligned base features, and the shared decoder renders the mixed grid.</p>
-          </article>
-        </div>
-
-        <div class="method-block">
-          <h3>Adaptive reconstruction</h3>
-          <img width="2288" height="953" decoding="async" src="assets/images/method-reconstruction.webp" loading="lazy" alt="MixTok reconstruction architecture with 1D and 2D token branches, reconstruction grid scorer, budget controller, and shared decoder">
-          <p>
-            The Reconstruction Grid Scorer sees both feature branches and the base reconstruction.
+      </figcaption>
+     </figure>
+     <div class="content reading-column method-notes">
+      <ul>
+       <li>
+        <b>
+         Global base.
+        </b>
+        A short 1D token sequence is spatially expanded and aligned with the shared decoder’s feature space.
+       </li>
+       <li>
+        <b>
+         Adaptive routing.
+        </b>
+        A grid scorer ranks candidate positions; top-p selection jointly determines the locations and per-image token count.
+       </li>
+       <li>
+        <b>
+         Local refinement.
+        </b>
+        Selected 2D token features replace the aligned base features, and the shared decoder renders the mixed grid.
+       </li>
+      </ul>
+     </div>
+     <div class="method-part">
+      <h3 class="title is-5 has-text-centered">
+       Adaptive reconstruction
+      </h3>
+      <figure class="paper-figure">
+       <img alt="MixTok reconstruction architecture with 1D and 2D token branches, reconstruction grid scorer, budget controller, and shared decoder" decoding="async" height="953" loading="lazy" src="assets/images/method-reconstruction.webp" width="2288"/>
+       <figcaption class="fig-caption">
+        The Reconstruction Grid Scorer sees both feature branches and the base reconstruction.
             Its score distribution drives the Budget Controller, concentrating the available 2D
             tokens at locations with the largest expected refinement benefit.
-          </p>
-        </div>
-
-        <div class="method-block">
-          <h3>Two-stage masked generation</h3>
-          <img width="2117" height="867" decoding="async" src="assets/images/method-generation.webp" loading="lazy" alt="Two-stage MixTok generation with a 1D MaskGIT, generation grid scorer, embedding adapter, and sparse 2D MaskGIT">
-          <p>
-            During generation, the 2D branch is unavailable to the router. A Generation Grid Scorer
+       </figcaption>
+      </figure>
+     </div>
+     <div class="method-part">
+      <h3 class="title is-5 has-text-centered">
+       Two-stage masked generation
+      </h3>
+      <figure class="paper-figure">
+       <img alt="Two-stage MixTok generation with a 1D MaskGIT, generation grid scorer, embedding adapter, and sparse 2D MaskGIT" decoding="async" height="867" loading="lazy" src="assets/images/method-generation.webp" width="2117"/>
+       <figcaption class="fig-caption">
+        During generation, the 2D branch is unavailable to the router. A Generation Grid Scorer
             distilled from its reconstruction counterpart predicts the refinement set from the base
             grid alone. An Embedding Adapter maps base features into spatial context embeddings for
             the sparse 2D MaskGIT.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section shell" id="results">
-      <div class="section-heading">
-        <span>03</span>
-        <h2>Results</h2>
-      </div>
-
-      <div class="results-intro">
-        <p>
-          MixTok is evaluated on ImageNet 256×256. Reconstruction uses all 50,000 validation
+       </figcaption>
+      </figure>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="results">
+    <div class="container is-max-widescreen">
+     <h2 class="title is-3 section-title has-text-centered">
+      Results
+     </h2>
+     <div class="content reading-column">
+      <p>
+       MixTok is evaluated on ImageNet 256×256. Reconstruction uses all 50,000 validation
           images; generation gFID is averaged over four independent 50,000-image sampling runs.
-        </p>
-      </div>
-
-      <h3 class="table-title">Image reconstruction</h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Tokenizer</th><th>Avg. tokens</th><th>rFID ↓</th><th>PSNR ↑</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>TiTok S-128</td><td>128</td><td>1.7222</td><td>17.72</td></tr>
-            <tr><td>TiTok BL-128 VQ</td><td>128</td><td>1.5063</td><td>19.83</td></tr>
-            <tr><td>One-D-Piece L-256</td><td>128</td><td>1.4406</td><td>17.71</td></tr>
-            <tr><td>FlexTok d18-d28</td><td>128</td><td><strong>1.1422</strong></td><td>16.76</td></tr>
-            <tr><td>DetailFlow-16</td><td>128</td><td><strong>1.1370</strong></td><td>19.46</td></tr>
-            <tr class="ours"><td>MixTok</td><td>128</td><td>1.1950</td><td><strong>19.51</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3 class="table-title">Class-conditional generation and efficiency</h3>
-      <div class="table-wrap wide-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Generator</th><th>Params</th><th>Tokens</th><th>Steps</th>
-              <th>gFID ↓</th><th>Latency ↓</th><th>FLOPs ↓</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>AdaGen-MaskGIT-L</td><td>206M</td><td>256</td><td>16</td><td>2.4883</td><td>372.0 ms</td><td>3.623 T</td></tr>
-            <tr><td>TiTok-S-128</td><td>295M</td><td>128</td><td>64</td><td>1.9994</td><td>1018.4 ms</td><td>9.949 T</td></tr>
-            <tr><td>Halton-MaskGIT-L†</td><td>480M</td><td>576</td><td>32</td><td>2.5143</td><td>591.5 ms</td><td>26.690 T</td></tr>
-            <tr><td>One-D-Piece-L-256</td><td>177M</td><td>256</td><td>16</td><td>2.4144</td><td>350.1 ms</td><td>3.526 T</td></tr>
-            <tr><td>LPD-L-256</td><td>337M</td><td>256</td><td>20</td><td>2.3863</td><td><strong>215.5 ms</strong></td><td>0.879 T</td></tr>
-            <tr><td>LlamaGen-L</td><td>343M</td><td>256</td><td>256</td><td>3.6803</td><td>4951.8 ms</td><td><strong>0.599 T</strong></td></tr>
-            <tr><td>DetailFlow-32</td><td>326M</td><td>256</td><td>39</td><td>2.6315</td><td>669.9 ms</td><td>5.627 T</td></tr>
-            <tr class="ours"><td>MixTok</td><td>321M</td><td>130.66</td><td>8+8</td><td><strong>1.9511</strong></td><td>270.1 ms</td><td>1.452 T</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="table-note">
-        Latency is median end-to-end generation time at batch size 1 on one RTX 5090,
+      </p>
+     </div>
+     <h3 class="title is-5 has-text-centered result-subtitle">
+      Image reconstruction
+     </h3>
+     <div class="table-wrapper">
+      <table class="results-table">
+       <thead>
+        <tr>
+         <th>
+          Tokenizer
+         </th>
+         <th>
+          Avg. tokens
+         </th>
+         <th>
+          rFID ↓
+         </th>
+         <th>
+          PSNR ↑
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          TiTok S-128
+         </td>
+         <td>
+          128
+         </td>
+         <td>
+          1.7222
+         </td>
+         <td>
+          17.72
+         </td>
+        </tr>
+        <tr>
+         <td>
+          TiTok BL-128 VQ
+         </td>
+         <td>
+          128
+         </td>
+         <td>
+          1.5063
+         </td>
+         <td>
+          19.83
+         </td>
+        </tr>
+        <tr>
+         <td>
+          One-D-Piece L-256
+         </td>
+         <td>
+          128
+         </td>
+         <td>
+          1.4406
+         </td>
+         <td>
+          17.71
+         </td>
+        </tr>
+        <tr>
+         <td>
+          FlexTok d18-d28
+         </td>
+         <td>
+          128
+         </td>
+         <td>
+          <strong>
+           1.1422
+          </strong>
+         </td>
+         <td>
+          16.76
+         </td>
+        </tr>
+        <tr>
+         <td>
+          DetailFlow-16
+         </td>
+         <td>
+          128
+         </td>
+         <td>
+          <strong>
+           1.1370
+          </strong>
+         </td>
+         <td>
+          19.46
+         </td>
+        </tr>
+        <tr class="ours">
+         <td>
+          MixTok
+         </td>
+         <td>
+          128
+         </td>
+         <td>
+          1.1950
+         </td>
+         <td>
+          <strong>
+           19.51
+          </strong>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <h3 class="title is-5 has-text-centered result-subtitle">
+      Class-conditional generation and efficiency
+     </h3>
+     <div class="table-wrapper">
+      <table class="results-table">
+       <thead>
+        <tr>
+         <th>
+          Generator
+         </th>
+         <th>
+          Params
+         </th>
+         <th>
+          Tokens
+         </th>
+         <th>
+          Steps
+         </th>
+         <th>
+          gFID ↓
+         </th>
+         <th>
+          Latency ↓
+         </th>
+         <th>
+          FLOPs ↓
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          AdaGen-MaskGIT-L
+         </td>
+         <td>
+          206M
+         </td>
+         <td>
+          256
+         </td>
+         <td>
+          16
+         </td>
+         <td>
+          2.4883
+         </td>
+         <td>
+          372.0 ms
+         </td>
+         <td>
+          3.623 T
+         </td>
+        </tr>
+        <tr>
+         <td>
+          TiTok-S-128
+         </td>
+         <td>
+          295M
+         </td>
+         <td>
+          128
+         </td>
+         <td>
+          64
+         </td>
+         <td>
+          1.9994
+         </td>
+         <td>
+          1018.4 ms
+         </td>
+         <td>
+          9.949 T
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Halton-MaskGIT-L†
+         </td>
+         <td>
+          480M
+         </td>
+         <td>
+          576
+         </td>
+         <td>
+          32
+         </td>
+         <td>
+          2.5143
+         </td>
+         <td>
+          591.5 ms
+         </td>
+         <td>
+          26.690 T
+         </td>
+        </tr>
+        <tr>
+         <td>
+          One-D-Piece-L-256
+         </td>
+         <td>
+          177M
+         </td>
+         <td>
+          256
+         </td>
+         <td>
+          16
+         </td>
+         <td>
+          2.4144
+         </td>
+         <td>
+          350.1 ms
+         </td>
+         <td>
+          3.526 T
+         </td>
+        </tr>
+        <tr>
+         <td>
+          LPD-L-256
+         </td>
+         <td>
+          337M
+         </td>
+         <td>
+          256
+         </td>
+         <td>
+          20
+         </td>
+         <td>
+          2.3863
+         </td>
+         <td>
+          <strong>
+           215.5 ms
+          </strong>
+         </td>
+         <td>
+          0.879 T
+         </td>
+        </tr>
+        <tr>
+         <td>
+          LlamaGen-L
+         </td>
+         <td>
+          343M
+         </td>
+         <td>
+          256
+         </td>
+         <td>
+          256
+         </td>
+         <td>
+          3.6803
+         </td>
+         <td>
+          4951.8 ms
+         </td>
+         <td>
+          <strong>
+           0.599 T
+          </strong>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          DetailFlow-32
+         </td>
+         <td>
+          326M
+         </td>
+         <td>
+          256
+         </td>
+         <td>
+          39
+         </td>
+         <td>
+          2.6315
+         </td>
+         <td>
+          669.9 ms
+         </td>
+         <td>
+          5.627 T
+         </td>
+        </tr>
+        <tr class="ours">
+         <td>
+          MixTok
+         </td>
+         <td>
+          321M
+         </td>
+         <td>
+          130.66
+         </td>
+         <td>
+          8+8
+         </td>
+         <td>
+          <strong>
+           1.9511
+          </strong>
+         </td>
+         <td>
+          270.1 ms
+         </td>
+         <td>
+          1.452 T
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <p class="table-note">
+      Latency is median end-to-end generation time at batch size 1 on one RTX 5090,
         including RGB decoding. FLOPs are counted per image with multiply-add counted as two.
         †Halton-MaskGIT-L uses its native 384×384 output; other rows use 256×256.
+     </p>
+     <div class="content reading-column result-summary">
+      <p>
+       <b>
+        3.77×
+       </b>
+       faster than TiTok-S-128 under the measured single-image protocol.
+       <b>
+        2.48×
+       </b>
+       faster than DetailFlow-32 while producing fewer content tokens.
+       <b>
+        8+8
+       </b>
+       masked sampling rounds in the main generation configuration.
       </p>
-
-      <div class="comparison-cards">
-        <article>
-          <span class="comparison-value">3.77×</span>
-          <p>faster than TiTok-S-128 under the measured single-image protocol.</p>
-        </article>
-        <article>
-          <span class="comparison-value">2.48×</span>
-          <p>faster than DetailFlow-32 while producing fewer content tokens.</p>
-        </article>
-        <article>
-          <span class="comparison-value">8+8</span>
-          <p>masked sampling rounds in the main generation configuration.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-tinted" id="visuals">
-      <div class="shell">
-        <div class="section-heading">
-          <span>04</span>
-          <h2>Visualizations</h2>
-        </div>
-
-        <figure class="visual-panel">
-          <h3>Reconstruction</h3>
-          <img width="3924" height="1145" decoding="async" src="assets/images/reconstruction-samples.webp" loading="lazy" alt="Reconstruction examples comparing ground truth, 1D base reconstruction, selected grid locations, and MixTok reconstruction">
-          <figcaption>
-            Ground truth, 1D base reconstruction, selected local regions, and final mixed reconstruction.
-          </figcaption>
-        </figure>
-
-        <figure class="visual-panel">
-          <h3>Image-dependent token budgets</h3>
-          <img width="3490" height="2189" decoding="async" src="assets/images/token-distributions.webp" loading="lazy" alt="Distribution of selected 2D token counts for reconstruction and three generation seeds">
-          <figcaption>
-            MixTok varies the refinement budget by image. Generation distributions remain stable across sampling seeds.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section shell narrow" id="citation">
-      <div class="section-heading">
-        <span>05</span>
-        <h2>Citation</h2>
-      </div>
-      <p class="citation-note">Draft citation; replace the author field when the double-blind period ends.</p>
-      <div class="bibtex-wrap">
-        <pre id="bibtex"><code>@article{mixtok2026,
+     </div>
+    </div>
+   </section>
+   <section class="section" id="visuals">
+    <div class="container is-max-desktop">
+     <h2 class="title is-3 section-title has-text-centered">
+      Visualizations
+     </h2>
+     <div class="vis-group">
+      <h3 class="title is-5 has-text-centered">
+       Reconstruction
+      </h3>
+      <figure class="paper-figure">
+       <img alt="Reconstruction examples comparing ground truth, 1D base reconstruction, selected grid locations, and MixTok reconstruction" decoding="async" height="1145" loading="lazy" src="assets/images/reconstruction-samples.webp" width="3924"/>
+       <figcaption class="fig-caption">
+        Ground truth, 1D base reconstruction, selected local regions, and final mixed reconstruction.
+       </figcaption>
+      </figure>
+     </div>
+     <div class="vis-group">
+      <h3 class="title is-5 has-text-centered">
+       Image-dependent token budgets
+      </h3>
+      <figure class="paper-figure">
+       <img alt="Distribution of selected 2D token counts for reconstruction and three generation seeds" decoding="async" height="2189" loading="lazy" src="assets/images/token-distributions.webp" width="3490"/>
+       <figcaption class="fig-caption">
+        MixTok varies the refinement budget by image. Generation distributions remain stable across sampling seeds.
+       </figcaption>
+      </figure>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="citation">
+    <div class="container is-max-desktop">
+     <h2 class="title is-3 section-title has-text-centered">
+      BibTeX
+     </h2>
+     <p class="citation-note has-text-centered">
+      Draft citation; replace the author field when the double-blind period ends.
+     </p>
+     <div class="bibtex-wrap">
+      <pre class="bibtex-box" id="bibtex"><code>@article{mixtok2026,
   title  = {MixTok: Adaptive Visual Tokenization with Global 1D Tokens
             and Sparse 2D Refinement},
   author = {Authors withheld during double-blind review},
   year   = {2026}
 }</code></pre>
-        <button class="copy-button" type="button" data-copy="bibtex">Copy</button>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="shell footer-inner">
-      <p>MixTok · 2026</p>
-      <p>Layout inspired by the <a href="https://lxazjk.me/FlashAR/">FlashAR</a> and Nerfies project pages.</p>
+      <button class="copy-button" data-copy="bibtex" type="button">
+       Copy
+      </button>
+     </div>
     </div>
+   </section>
+  </main>
+  <footer class="footer">
+   <div class="container">
+    <div class="content has-text-centered" style="font-size: 0.9rem;">
+     <p>
+      Website layout adapted from
+      <a href="https://lxazjk.me/FlashAR/">
+       FlashAR
+      </a>
+      and
+      <a href="https://nerfies.github.io/">
+       Nerfies
+      </a>
+      .
+     </p>
+    </div>
+   </div>
   </footer>
-
-  <dialog class="image-viewer" aria-label="Expanded figure">
-    <div class="viewer-toolbar"><p id="viewer-caption">Figure</p><button class="viewer-close" type="button" aria-label="Close expanded figure">Close <span aria-hidden="true">×</span></button></div>
-    <div class="viewer-body"><img alt=""></div>
-    <p class="viewer-hint">Scroll to explore · Esc to close</p>
+  <dialog aria-label="Expanded figure" class="image-viewer">
+   <div class="viewer-toolbar">
+    <p id="viewer-caption">
+     Figure
+    </p>
+    <button aria-label="Close expanded figure" class="viewer-close" type="button">
+     Close
+     <span aria-hidden="true">
+      ×
+     </span>
+    </button>
+   </div>
+   <div class="viewer-body">
+    <img alt=""/>
+   </div>
+   <p class="viewer-hint">
+    Scroll to explore · Esc to close
+   </p>
   </dialog>
-  <script src="assets/script.js?v=20260928-design2"></script>
-</body>
+  <script src="assets/script.js?v=flashar-layout-1">
+  </script>
+ </body>
 </html>
