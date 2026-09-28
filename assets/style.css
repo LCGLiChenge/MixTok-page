@@ -150,7 +150,7 @@
       .results-table { font-size: 0.78rem; }
       .results-table th, .results-table td { padding: 4px 5px; }
     }
-  
+
 /* MixTok content and accessible figure viewing. */
 html { scroll-behavior: smooth; }
 .reading-column { max-width: 800px; margin: 0 auto; }
