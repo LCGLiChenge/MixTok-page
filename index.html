@@ -151,6 +151,19 @@
      <h2 class="title is-3 section-title has-text-centered">
       Method
      </h2>
+     <div class="method-part">
+      <h3 class="title is-5 has-text-centered">
+       Reconstruction overview
+      </h3>
+      <figure class="paper-figure">
+       <img alt="MixTok reconstruction architecture with 1D and 2D token branches, reconstruction grid scorer, budget controller, and shared decoder" decoding="async" height="953" loading="lazy" src="assets/images/method-reconstruction.webp" width="2288"/>
+       <figcaption class="fig-caption">
+        A compact 1D representation provides the base feature grid, while the router selects
+        sparse 2D features for local refinement. The shared decoder reconstructs the image
+        from the mixed feature grid.
+       </figcaption>
+      </figure>
+     </div>
      <div class="content reading-column method-notes">
       <ul>
        <li>
@@ -172,19 +185,6 @@
         Selected 2D token features replace the aligned base features, and the shared decoder renders the mixed grid.
        </li>
       </ul>
-     </div>
-     <div class="method-part">
-      <h3 class="title is-5 has-text-centered">
-       Adaptive reconstruction
-      </h3>
-      <figure class="paper-figure">
-       <img alt="MixTok reconstruction architecture with 1D and 2D token branches, reconstruction grid scorer, budget controller, and shared decoder" decoding="async" height="953" loading="lazy" src="assets/images/method-reconstruction.webp" width="2288"/>
-       <figcaption class="fig-caption">
-        The Reconstruction Grid Scorer sees both feature branches and the base reconstruction.
-            Its score distribution drives the Budget Controller, concentrating the available 2D
-            tokens at locations with the largest expected refinement benefit.
-       </figcaption>
-      </figure>
      </div>
      <div class="method-part">
       <h3 class="title is-5 has-text-centered">
