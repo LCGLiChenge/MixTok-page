@@ -1,8 +1,8 @@
 :root {
-  --surface-tint: #e5d3aa;
-  --border-accent: #c7935f;
-  --accent: #3D6036;
-  --ink: #332b26;
+  --surface-tint: #f4c2c2;
+  --border-accent: #a6a39c;
+  --accent: #555d50;
+  --ink: #30342d;
 }
     body {
       font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
@@ -167,7 +167,7 @@ html { scroll-behavior: smooth; }
 .link-block a { margin: 0; }
 .button .icon svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .button[aria-disabled] { opacity: 1; cursor: default; }
-.button.is-dark[aria-disabled], .button.is-dark[aria-disabled]:hover { color: #796959; background: var(--surface-tint); border-color: var(--border-accent); }
+.button.is-dark[aria-disabled], .button.is-dark[aria-disabled]:hover { color: #6b7067; background: var(--surface-tint); border-color: var(--border-accent); }
 .result-subtitle { margin-top: 2.5rem; }
 .result-summary { margin-top: 1.8rem; }
 .table-note { font-size: .8rem; color: #666; line-height: 1.8; }
@@ -203,17 +203,17 @@ body.viewer-open { overflow: hidden; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-/* Sand and forest palette; FlashAR layout and figure colors are preserved. */
+/* Blush and sage palette; FlashAR layout and figure colors are preserved. */
 ::selection { background: var(--surface-tint); color: var(--accent); }
 a { color: var(--accent); }
-a:hover { color: #2c4927; }
+a:hover { color: #3e463a; }
 .publication-title { color: var(--ink); }
 .project-name, .section-title { color: var(--accent); }
 main > .hero:first-child { background: var(--surface-tint); }
 .teaser { padding-top: 1.5rem; }
 .button.is-dark { background: var(--accent); color: #fff; }
-a.button.is-dark:hover, a.button.is-dark:focus { background: #2c4927; color: #fff; }
-.results-table thead { background: #f7f2e7; }
+a.button.is-dark:hover, a.button.is-dark:focus { background: #3e463a; color: #fff; }
+.results-table thead { background: #fdf3f3; }
 .results-table .ours td:first-child { color: var(--accent); font-weight: 700; box-shadow: inset 3px 0 var(--border-accent); }
 .viewer-toolbar { background: var(--surface-tint); border-color: var(--border-accent); }
 .viewer-close { border-color: var(--border-accent); color: var(--accent); }
