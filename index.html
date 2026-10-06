@@ -14,7 +14,7 @@
   </title>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Google+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
   <link href="assets/vendor/bulma.min.css" rel="stylesheet"/>
-  <link href="assets/style.css?v=warm-final-20260929" rel="stylesheet"/>
+  <link href="assets/style.css?v=authors-20261006" rel="stylesheet"/>
  </head>
  <body>
   <main>
@@ -28,10 +28,14 @@
          <br class="desktop-break"/>
          with Global 1D Tokens and Sparse 2D Refinement
         </h1>
-        <div class="publication-authors" style="margin-top: 0.8rem; color: #777;">
-         Author information withheld during double-blind review
-        </div>
-        <div class="column has-text-centered" style="margin-top: 1rem;">
+        <div class="publication-authors"><span class="author-name"><a href="https://openreview.net/profile?id=~Chenge_Li2">Chenge Li</a><sup>1</sup></span><span class="author-name"><a href="https://hexy.tech/">Yefei He</a><sup>1,†,‡</sup></span><span class="author-name"><a href="https://openreview.net/profile?id=~Xinyu_Liu9">Xinyu Liu</a><sup>2</sup></span><span class="author-name"><a href="https://chenfeng1271.github.io/">Feng Chen</a><sup>3,†,‡</sup></span><span class="author-name"><a href="https://openreview.net/profile?id=~Hong_Zhou5">Hong Zhou</a><sup>1</sup></span><span class="author-name"><a href="https://bohanzhuang.github.io/">Bohan Zhuang</a><sup>1</sup></span></div>
+<div class="publication-affiliations">
+<span><sup>1</sup>Zhejiang University</span>
+<span><sup>2</sup>The Hong Kong University of Science and Technology</span>
+<span><sup>3</sup>University of Adelaide</span></div>
+<p class="author-roles"><span>† Project lead</span><span>‡ Corresponding author</span></p>
+<p class="author-contact"><a href="mailto:billhe@zju.edu.cn">billhe@zju.edu.cn</a><span aria-hidden="true"> · </span><a href="mailto:chenfeng1271@gmail.com">chenfeng1271@gmail.com</a></p>
+        <div class="publication-links">
          <div class="link-block">
           <span aria-disabled="true" class="button is-rounded is-dark is-small" title="Paper link coming soon">
            <span class="icon">
@@ -41,7 +45,7 @@
             </svg>
            </span>
            <span>
-            Paper
+            Paper · coming soon
            </span>
           </span>
           <a class="button is-rounded is-dark is-small" href="https://github.com/LCGLiChenge/MixTok">
@@ -203,33 +207,33 @@
     </div>
    </section>
    <section class="section" id="results">
-    <div class="container is-max-widescreen">
+    <div class="container is-max-desktop">
      <h2 class="title is-3 section-title has-text-centered">
       Results
      </h2>
      <div class="content reading-column">
       <p>
        MixTok is evaluated on ImageNet 256×256. Reconstruction uses all 50,000 validation
-          images; generation gFID is averaged over four independent 50,000-image sampling runs.
+          images; MixTok’s generation gFID is averaged over four independent 50,000-image sampling runs.
       </p>
      </div>
      <h3 class="title is-5 has-text-centered result-subtitle">
       Image reconstruction
      </h3>
-     <div class="table-wrapper">
+     <div class="table-wrapper" tabindex="0" role="region" aria-label="Results table; scroll horizontally on narrow screens">
       <table class="results-table">
        <thead>
         <tr>
-         <th>
+         <th scope="col">
           Tokenizer
          </th>
-         <th>
+         <th scope="col">
           Avg. tokens
          </th>
-         <th>
+         <th scope="col">
           rFID ↓
          </th>
-         <th>
+         <th scope="col">
           PSNR ↑
          </th>
         </tr>
@@ -260,7 +264,7 @@
           1.5063
          </td>
          <td>
-          19.83
+          <strong>19.83</strong>
          </td>
         </tr>
         <tr>
@@ -285,9 +289,9 @@
           128
          </td>
          <td>
-          <strong>
+          
            1.1422
-          </strong>
+          
          </td>
          <td>
           16.76
@@ -301,9 +305,9 @@
           128
          </td>
          <td>
-          <strong>
-           1.1370
-          </strong>
+          
+           <strong>1.1370</strong>
+          
          </td>
          <td>
           19.46
@@ -320,9 +324,9 @@
           1.1950
          </td>
          <td>
-          <strong>
+          
            19.51
-          </strong>
+          
          </td>
         </tr>
        </tbody>
@@ -331,29 +335,29 @@
      <h3 class="title is-5 has-text-centered result-subtitle">
       Class-conditional generation and efficiency
      </h3>
-     <div class="table-wrapper">
+     <div class="table-wrapper" tabindex="0" role="region" aria-label="Results table; scroll horizontally on narrow screens">
       <table class="results-table">
        <thead>
         <tr>
-         <th>
+         <th scope="col">
           Generator
          </th>
-         <th>
+         <th scope="col">
           Params
          </th>
-         <th>
+         <th scope="col">
           Tokens
          </th>
-         <th>
+         <th scope="col">
           Steps
          </th>
-         <th>
+         <th scope="col">
           gFID ↓
          </th>
-         <th>
+         <th scope="col">
           Latency ↓
          </th>
-         <th>
+         <th scope="col">
           FLOPs ↓
          </th>
         </tr>
@@ -610,14 +614,16 @@
       BibTeX
      </h2>
      <p class="citation-note has-text-centered">
-      Draft citation; replace the author field when the double-blind period ends.
+      Project citation. The arXiv identifier will be added once available.
      </p>
      <div class="bibtex-wrap">
-      <pre class="bibtex-box" id="bibtex"><code>@article{mixtok2026,
+      <pre class="bibtex-box" id="bibtex"><code>@misc{li2026mixtok,
   title  = {MixTok: Adaptive Visual Tokenization with Global 1D Tokens
             and Sparse 2D Refinement},
-  author = {Authors withheld during double-blind review},
-  year   = {2026}
+  author = {Li, Chenge and He, Yefei and Liu, Xinyu and Chen, Feng
+            and Zhou, Hong and Zhuang, Bohan},
+  year   = {2026},
+  url    = {https://lcglichenge.github.io/MixTok-page/}
 }</code></pre>
       <button class="copy-button" data-copy="bibtex" type="button">
        Copy
